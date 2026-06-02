@@ -374,7 +374,7 @@ const articles = [
           {
             step: 2,
             title: "Completá los datos del usuario",
-            detail: "Ingresá el nombre completo, email y nombre de usuario del empleado. Asigná el Tipo de Usuario que definiste en el paso anterior. Configurá a qué empresa y establecimiento puede acceder. Definí si puede conectarse solo desde la red local o desde cualquier lugar."
+            detail: "Ingresá el nombre completo, correo electrónico y nombre de usuario del empleado. Asigná el Tipo de Usuario que definiste en el paso anterior. Configurá a qué empresa y establecimiento puede acceder. Definí si puede conectarse solo desde la red local o desde cualquier lugar."
           },
           {
             step: 3,
@@ -636,9 +636,11 @@ export default function App() {
 
         {grouped.map(({ cat, items }) => (
           <div key={cat} style={{ marginBottom: 8 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.08em", padding: "12px 20px 6px" }}>
-              {cat}
-            </div>
+             {cat  ===  "Primeros pasos" && (
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.08em", padding: "12px 20px 6px" }}>
+                {cat}
+              </div>
+          )}
             {items.map(a => (
               <button
                 key={a.id}
