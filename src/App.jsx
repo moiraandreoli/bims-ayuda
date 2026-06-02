@@ -17,8 +17,8 @@ const articles = [
         items: [
           {
             step: 1,
-            title: "Ingresá a https://getbims.com/ y hacé clic en Crear cuenta",
-            detail: "Vas a ver un formulario donde te pedimos tu nombre, apellido, correo electrónico y contraseña."
+            title: "Ingresá a https://getbims.com/ y hacé clic en Empezar gratis",
+            detail: "Vas a ver un formulario donde te pedimos tu nombres, apellidos, nombre de la empresa, correo electrónico y contraseña."
           },
           {
             step: 2,
@@ -32,8 +32,8 @@ const articles = [
           },
           {
             step: 4,
-            title: "Hacé clic en Crear cuenta gratis",
-            detail: "Te vamos a enviar un correo electrónico de confirmación a la dirección que ingresaste."
+            title: "Verificá tu correo electrónico",
+            detail: "Te vamos a enviar un correo de confirmación a la dirección que ingresaste."
           }
         ]
       },
@@ -44,7 +44,7 @@ const articles = [
         items: [
           "Revisá tu carpeta de spam o correo no deseado.",
           "Si usás Gmail, buscá en las pestañas \"Promociones\" o \"Actualizaciones\".",
-          "El correo electrónico llega desde noreply@bims.com.py en los próximos 2 minutos.",
+          "El correo electrónico llega desde ¿¿noreply@bims.com.py en los próximos 2 minutos.",
           "Si pasaron más de 5 minutos, podés reenviar el correo electrónico desde la pantalla de confirmación."
         ]
       },
@@ -81,17 +81,17 @@ const articles = [
           {
             step: 1,
             title: "Abrí el correo electrónico que te enviamos",
-            detail: "Buscá un correo electrónico con el asunto \"Confirmá tu cuenta en BIMS\" enviado desde noreply@bims.com.py."
+            detail: "Buscá un correo electrónico con el asunto \"Confirmá tu correo en BIMS\" enviado desde noreply@bims.com.py."
           },
           {
             step: 2,
-            title: "Hacé clic en \"Confirmar mi cuenta\"",
-            detail: "El botón te va a redirigir de vuelta a BIMS y tu cuenta va a quedar activa automáticamente."
+            title: "Hacé clic en \"Confirmar mi correo electrónico\"",
+            detail: "El botón te va a redirigir de vuelta a BIMS y es necesario que ingreses el correo, la contraseña y  cuenta va a quedar activa automáticamente."
           },
           {
             step: 3,
             title: "Continuá con la configuración",
-            detail: "Una vez confirmado el correo electrónico, podés seguir con el resto del onboarding: cargar el RUC, medios de pago y timbrado."
+            detail: "Una vez confirmado el correo electrónico, podés seguir con el resto del onboarding: cargar el RUC, y completar los datos de la empresa."
           }
         ]
       },
@@ -107,7 +107,7 @@ const articles = [
         items: [
           {
             q: "Hice clic en el link pero me dice que es inválido",
-            a: "Probablemente el link venció o ya fue usado. Pedí un nuevo correo electrónico de verificación desde la pantalla de inicio de sesión, opción \"Reenviar confirmación\"."
+            a: "Probablemente el link venció o ya fue usado. Pedí un nuevo correo electrónico de verificación desde la pantalla de inicio de sesión, opción \"Reenviar\"."
           },
           {
             q: "¿Puedo cambiar mi correo electrónico después de verificarlo?",
@@ -134,7 +134,7 @@ const articles = [
           {
             step: 1,
             title: "Ingresá el RUC en el campo de búsqueda",
-            detail: "Escribilo sin guión y con el dígito verificador. Ejemplo: 800123456789"
+            detail: "Escribilo sin guión y con el dígito verificador. Ejemplo: 1234560"
           },
           {
             step: 2,
@@ -144,7 +144,7 @@ const articles = [
           {
             step: 3,
             title: "Revisá los datos que aparecen",
-            detail: "Vas a ver el nombre de tu empresa y la razón social. Si todo está bien, hacé clic en Continuar."
+            detail: "Vas a ver el nombre y apellido del titular, tipo empresa y la razón social. Si todo está bien, hacé clic en Continuar."
           }
         ]
       },
@@ -170,7 +170,7 @@ const articles = [
         items: [
           {
             q: "¿Qué es el dígito verificador?",
-            a: "Es el último número del RUC, separado por un guión en los documentos oficiales. Por ejemplo, si tu RUC es 80012345-6, el número completo a ingresar es 800123456."
+            a: "Es el último número del RUC, separado por un guión en los documentos oficiales. Por ejemplo, si tu RUC es 1234560, el número completo a ingresar es  1234560. Puede tener entre 6 y 8 caracteres."
           },
           {
             q: "El sistema dice que mi RUC no es válido pero yo sé que existe",
@@ -184,6 +184,7 @@ const articles = [
       }
     ]
   },
+  
   {
     id: "medios-de-pago",
     title: "Cómo configurar tus medios de pago y cuentas fondo",
@@ -234,7 +235,7 @@ const articles = [
           },
           {
             q: "¿Es obligatorio configurar los medios de pago en este paso?",
-            a: "Podés omitir este paso y completarlo después. Pero tené en cuenta que sin al menos un medio de pago configurado, no vas a poder registrar ventas."
+            a: "Tené en cuenta que sin al menos un medio de pago configurado, no vas a poder registrar ventas."
           }
         ]
       }
@@ -267,7 +268,7 @@ const articles = [
           {
             step: 3,
             title: "BIMS lee los datos automáticamente",
-            detail: "Vamos a extraer el número de timbrado y la fecha de vencimiento del documento. Solo necesitás revisar que los datos sean correctos."
+            detail: "Vamos a extraer el número de timbrad, punto de venta, sucursal y la fecha de vencimiento del documento. Solo necesitás revisar que los datos sean correctos."
           },
           {
             step: 4,
@@ -280,13 +281,13 @@ const articles = [
         type: "callout",
         variant: "info",
         title: "¿Qué es el timbrado?",
-        text: "Es un código de 8 dígitos que la DNIT asigna a tu empresa para autorizar la emisión de facturas. Tiene una fecha de vencimiento y necesitás renovarlo periódicamente. BIMS te avisa cuando está próximo a vencer."
+        text: "Es un código de 8 dígitos que la DNIT asigna a tu empresa para autorizar la emisión de facturas. Tiene una fecha de vencimiento y necesitás renovarlo periódicamente para el caso de la facturación autoimpresa y preimpresa. El timbrado de facturación eletrónica no tiene vencimiento. BIMS te avisa cuando está próximo a vencer."
       },
       {
         type: "callout",
         variant: "warning",
         title: "Podés cargar el timbrado después",
-        text: "Si todavía no tenés el documento o preferís hacerlo más tarde, hacé clic en \"Cargar más tarde\". Pero recordá: no vas a poder emitir facturas hasta que el timbrado esté cargado y validado."
+        text: "Si todavía no tenés el documento o preferís hacerlo más tarde, podés dejarlo como pendiente. Pero recordá: no vas a poder emitir facturas hasta que el timbrado esté cargado."
       },
       {
         type: "faq",
@@ -294,7 +295,7 @@ const articles = [
         items: [
           {
             q: "El sistema no pudo leer los datos de mi PDF",
-            a: "Puede pasar si el PDF es una imagen escaneada con baja calidad. En ese caso, podés ingresar el número de timbrado y la fecha de vencimiento de forma manual."
+            a: "Puede pasar si el PDF es una imagen escaneada con baja calidad. Corroborá tener el PDF original que te entrega la DNIT."
           },
           {
             q: "¿Qué pasa cuando mi timbrado vence?",
@@ -302,7 +303,7 @@ const articles = [
           },
           {
             q: "¿Puedo tener más de un timbrado cargado?",
-            a: "Sí. Algunas empresas operan con más de un punto de emisión. Podés gestionar todos tus timbrados desde Configuración → Timbrado."
+            a: "Sí. Algunas empresas operan con más de un punto de venta. Podés gestionar todos tus timbrados desde Configuración → Timbrado."
           }
         ]
       }
@@ -355,7 +356,7 @@ const articles = [
     id: "usuarios",
     title: "Cómo agregar usuarios a tu empresa",
     category: "Configuración inicial",
-    readTime: "2 min",
+    readTime: "3 min",
     content: [
       {
         type: "intro",
@@ -367,24 +368,52 @@ const articles = [
         items: [
           {
             step: 1,
-            title: "Ingresá el correo electrónico de la persona que querés invitar",
-            detail: "Tiene que ser un correo electrónico válido. La persona va a recibir una invitación para crear su contraseña."
+            title: "Definí el rol del usuario",
+            detail: "Antes de crear el usuario, decidí qué tipo de acceso necesita. Un Tipo de Usuario determina qué puede ver y hacer cada persona en el sistema. Consultá la tabla de roles más abajo si tenés dudas."
           },
           {
             step: 2,
-            title: "Seleccioná el rol que le corresponde",
-            detail: "Cada rol tiene distintos permisos. Te recomendamos asignar el rol más restrictivo que cubra las necesidades de esa persona."
+            title: "Completá los datos del usuario",
+            detail: "Ingresá el nombre completo, email y nombre de usuario del empleado. Asigná el Tipo de Usuario que definiste en el paso anterior. Configurá a qué empresa y establecimiento puede acceder. Definí si puede conectarse solo desde la red local o desde cualquier lugar."
           },
           {
             step: 3,
-            title: "Enviá la invitación",
-            detail: "La persona va a recibir un correo electrónico para activar su acceso. Una vez que lo acepte, va a aparecer en tu lista de usuarios."
+            title: "Hacé clic en Crear usuario",
+            detail: "El sistema envía las credenciales de acceso al email registrado. La persona va a recibir un correo para activar su cuenta."
+          },
+          {
+            step: 4,
+            title: "Confirmá que el usuario está activo",
+            detail: "Una vez que el empleado acepte la invitación, va a aparecer en tu lista de usuarios como activo."
           }
         ]
       },
       {
-        type: "placeholder",
-        text: "📌 Próximamente: descripción detallada de roles y permisos, y capturas del formulario de invitación."
+        type: "roles_table"
+      },
+      {
+        type: "callout",
+        variant: "info",
+        title: "Te recomendamos el principio de mínimo acceso",
+        text: "Asigná siempre el rol más restrictivo que cubra lo que esa persona necesita hacer. Podés ampliar los permisos después si hace falta, pero es más difícil restringirlos una vez que el usuario ya los usó."
+      },
+      {
+        type: "faq",
+        title: "Preguntas frecuentes",
+        items: [
+          {
+            q: "¿Puedo cambiar el rol de un usuario después de crearlo?",
+            a: "Sí. Podés editar el rol de cualquier usuario desde Configuración → Usuarios, haciendo clic en el nombre del usuario."
+          },
+          {
+            q: "¿Qué pasa si el usuario no recibe el email de invitación?",
+            a: "Pedile que revise su carpeta de spam. Si el problema persiste, podés reenviar las credenciales desde la lista de usuarios haciendo clic en los tres puntos junto al nombre del usuario."
+          },
+          {
+            q: "¿Puedo desactivar un usuario sin eliminarlo?",
+            a: "Sí. Desde Configuración → Usuarios → Crear. Podés desactivar el acceso de un usuario sin perder su historial. Podés reactivarlo cuando necesites."
+          }
+        ]
       }
     ]
   },
@@ -511,6 +540,37 @@ function FaqList({ items }) {
   );
 }
 
+const roles = [
+  { rol: "Administrador", accesos: "Acceso completo: configuración, reportes, caja, ventas y compras." },
+  { rol: "Vendedor / Cajero", accesos: "Solo POS: registrar ventas y cobros. Sin acceso a configuración ni reportes sensibles." },
+  { rol: "Encargado de Compras", accesos: "Módulo de compras y stock. Sin acceso a caja ni configuración financiera." },
+  { rol: "Encargado de Sucursal", accesos: "Ventas, caja y reportes de su sucursal. Sin acceso a la configuración general." }
+];
+
+function RolesTable() {
+  return (
+    <div style={{ marginBottom: 24 }}>
+      <div style={{ fontWeight: 700, fontSize: 15, color: "#111827", marginBottom: 12 }}>Ejemplos de roles comunes</div>
+      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
+        <thead>
+          <tr>
+            <th style={{ background: "#1E3A5F", color: "#fff", textAlign: "left", padding: "10px 14px", borderRadius: "6px 0 0 0", width: "35%" }}>Rol</th>
+            <th style={{ background: "#1E3A5F", color: "#fff", textAlign: "left", padding: "10px 14px", borderRadius: "0 6px 0 0" }}>Accesos típicos</th>
+          </tr>
+        </thead>
+        <tbody>
+          {roles.map((r, i) => (
+            <tr key={i} style={{ background: i % 2 === 0 ? "#F8FAFF" : "#fff" }}>
+              <td style={{ padding: "10px 14px", borderBottom: "1px solid #E5E7EB", fontWeight: 600, color: "#1D4ED8", verticalAlign: "top" }}>{r.rol}</td>
+              <td style={{ padding: "10px 14px", borderBottom: "1px solid #E5E7EB", color: "#374151", lineHeight: 1.6 }}>{r.accesos}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function Article({ article }) {
   return (
     <div>
@@ -539,6 +599,7 @@ function Article({ article }) {
             <p style={{ margin: 0, fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>{block.text}</p>
           </div>
         );
+        if (block.type === "roles_table") return <RolesTable key={i} />;
         if (block.type === "faq") return <FaqList key={i} items={block.items} />;
         if (block.type === "placeholder") return (
           <div key={i} style={{ background: "#F3F4F6", borderRadius: 8, padding: "12px 16px", marginBottom: 20, fontSize: 13, color: "#9CA3AF", fontStyle: "italic" }}>
