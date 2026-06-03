@@ -103,8 +103,8 @@ const articles = [
       {
         type: "callout",
         variant: "warning",
-        title: "El link de verificación vence a las 24 horas",
-        text: "Si no confirmás tu correo electrónico dentro de las 24 horas, el link va a dejar de funcionar. Podés solicitar uno nuevo desde la pantalla de confirmación haciendo clic en \"Reenviar correo electrónico\"."
+        title: "El link de verificación vence a las 48 horas",
+        text: "Si no confirmás tu correo electrónico dentro de las 48 horas, el link va a dejar de funcionar. Podés solicitar uno nuevo desde la pantalla de confirmación haciendo clic en \"Reenviar\"."
       },
       {
         type: "faq",
@@ -175,7 +175,7 @@ const articles = [
         items: [
           {
             q: "¿Qué es el dígito verificador?",
-            a: "Es el último número del RUC, separado por un guión en los documentos oficiales. Por ejemplo, si tu RUC es 1234560, el número completo a ingresar es  1234560. Puede tener entre 6 y 8 caracteres."
+            a: "Es el último número del RUC, separado por un guión. Por ejemplo, si tu RUC es 123456-0, el número completo a ingresar es  1234560. Puede tener entre 6 y 8 caracteres."
           },
           {
             q: "El sistema dice que mi RUC no es válido pero yo sé que existe",
@@ -216,8 +216,8 @@ const articles = [
           },
           {
             step: 3,
-            title: "Hacé clic en Continuar",
-            detail: "Con al menos un medio de pago seleccionado ya podés avanzar."
+            title: "Hacé clic en Guardar",
+            detail: "Podés editar esta sección cuando quieras, mientras tanto vas a ver este paso como pendiente."
           }
         ]
       },
@@ -245,11 +245,11 @@ const articles = [
         items: [
           {
             q: "¿Puedo cambiar los nombres de las cuentas fondo?",
-            a: "Sí. Podés editarlos en cualquier momento desde Configuración → Cuentas fondo."
+            a: "Sí. Podés editarlos en cualquier momento desde Configuración → Finanzas → Cuentas fondo."
           },
           {
             q: "¿Qué pasa si después quiero agregar un medio de pago que no seleccioné acá?",
-            a: "Podés agregar medios de pago en cualquier momento desde Configuración → Medios de cobro. No necesitás repetir el onboarding."
+            a: "Podés agregar medios de pago en cualquier momento desde Configuración → Ventas → Medios de pago."
           },
           {
             q: "¿Es obligatorio configurar los medios de pago en este paso?",
@@ -267,7 +267,7 @@ const articles = [
     content: [
       {
         type: "intro",
-        text: "El timbrado es el código que la DNIT le asigna a tu empresa para autorizar la emisión de facturas con validez legal. Sin él, podés usar BIMS pero no vas a poder emitir facturas."
+        text: "El timbrado es el código que la DNIT le asigna a tu empresa para autorizar la emisión de facturas con validez legal. Sin el, podés usar BIMS pero no vas a poder emitir facturas."
       },
       {
         type: "steps",
@@ -286,12 +286,12 @@ const articles = [
           {
             step: 3,
             title: "BIMS lee los datos automáticamente",
-            detail: "Vamos a extraer el tipo de facturación, el número de timbrado, los datos del punto de venta y de la sucursal, fecha de vencimiento del documento, números de factura, nota de crédito y remisión. Solo necesitás revisar que los datos sean correctos."
+            detail: "Vamos a extraer el tipo de facturación, el número de timbrado, los datos del punto de venta y de la sucursal, fecha de vencimiento del documento, números de factura, nota de crédito y remisión. Solo necesitás revisar que los datos sean correctos. Y vamos a asignar un nombre al punto de venta y a la sucursal, que podés editar."
           },
           {
             step: 4,
-            title: "Confirmá y continuá",
-            detail: "Si los datos están bien, hacé clic en Continuar. Si algo no coincide, podés corregirlo manualmente antes de guardar."
+            title: "Revisá y guardá",
+            detail: "Si los datos están bien, hacé clic en Guardar. Si algo no coincide, podés corregirlo manualmente antes de guardar."
           }
         ]
       },
@@ -299,7 +299,7 @@ const articles = [
         type: "callout",
         variant: "info",
         title: "¿Qué es el timbrado?",
-        text: "Es un código de 8 dígitos que la DNIT asigna a tu empresa para autorizar la emisión de facturas. Tiene una fecha de vencimiento y necesitás renovarlo periódicamente para el caso de la facturación autoimpresa y preimpresa. El timbrado de facturación eletrónica no tiene vencimiento. BIMS te avisa cuando está próximo a vencer."
+        text: "Es un código de 8 dígitos que la DNIT asigna a tu empresa para autorizar la emisión de facturas. Tiene una fecha de vencimiento y necesitás renovarlo periódicamente para el caso de la facturación autoimpresa y preimpresa. En estos casos, BIMS te avisa cuando está próximo a vencer. El timbrado de facturación eletrónica no tiene vencimiento."
       },
       {
         type: "callout",
