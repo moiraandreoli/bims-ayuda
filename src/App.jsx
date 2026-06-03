@@ -133,6 +133,16 @@ const articles = [
         text: "El RUC es el número que identifica a tu empresa ante la DNIT. BIMS lo necesita para validar tus datos y asegurarse de que podés emitir facturas con validez legal."
       },
       {
+        type: "callout",
+        variant: "warning",
+        title: "El RUC es obligatorio para crear la cuenta",
+        items: [
+          "No vas a poder completar el registro en BIMS sin ingresar un RUC válido y habilitado.",
+          "Si todavía no tenés RUC, podés tramitarlo en línea en marangatu.set.gov.py. Los pasos son: crear tu usuario en el portal con tu cédula de identidad, completar el formulario de inscripción en el registro único de contribuyentes, y esperar la aprobación (generalmente tarda 24-48 horas hábiles).",
+          "Una vez aprobado, vas a recibir tu número de RUC y podés continuar con el registro en BIMS."
+        ]
+      },
+      {
         type: "steps",
         title: "Pasos para ingresar el RUC",
         items: [
@@ -164,12 +174,6 @@ const articles = [
         ]
       },
       {
-        type: "callout",
-        variant: "warning",
-        title: "El RUC tiene que estar habilitado en la DNIT",
-        text: "Si tu RUC no aparece o figura como inactivo, necesitás regularizar la situación directamente ante la DNIT antes de continuar. BIMS no puede completar el registro con un RUC inhabilitado."
-      },
-      {
         type: "faq",
         title: "Preguntas frecuentes",
         items: [
@@ -180,6 +184,10 @@ const articles = [
           {
             q: "El sistema dice que mi RUC no es válido pero yo sé que existe",
             a: "Asegurate de escribirlo sin guiones y sin espacios. Si el problema persiste, verificá que tu RUC esté activo en el Sistema Marangatu o contactá a soporte."
+          },
+          {
+            q: "¿Qué pasa si mi RUC no está habilitado en la DNIT?",
+            a: "Si tu RUC no aparece o figura como inactivo, necesitás regularizar la situación directamente ante la DNIT antes de continuar. BIMS no puede completar el registro con un RUC inhabilitado."
           },
           {
             q: "¿Puedo cambiar el RUC después de registrarme?",
@@ -322,6 +330,78 @@ const articles = [
           {
             q: "¿Puedo tener más de un timbrado cargado?",
             a: "Sí. Algunas empresas operan con más de un punto de venta. Podés gestionar todos tus timbrados desde Configuración → Timbrado."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "facturacion-electronica",
+    title: "Facturación electrónica: requisitos y cómo habilitarla",
+    category: "Configuración inicial",
+    readTime: "4 min",
+    content: [
+      {
+        type: "intro",
+        text: "La facturación electrónica te permite emitir facturas con validez legal ante la DNIT sin necesidad de papel. Las facturas se generan, firman y envían digitalmente, reduciendo costos y tiempos de emisión."
+      },
+      {
+        type: "callout",
+        variant: "warning",
+        title: "Requisitos obligatorios para habilitar la facturación electrónica",
+        items: [
+          "RUC activo y habilitado en la DNIT.",
+          "Timbrado habilitado para facturación electrónica.",
+          "Firma digital (.p12 o .pfx) obtenida con un proveedor certificado externo."
+        ]
+      },
+      {
+        type: "steps",
+        title: "Pasos para habilitar la facturación electrónica",
+        items: [
+          {
+            step: 1,
+            title: "Obtené tu firma digital con un proveedor certificado",
+            detail: "Solicitá tu certificado de firma digital con un proveedor autorizado como ITTI (https://www.secure.itti.digital/index.html) u otros proveedores certificados. Vas a recibir un archivo .p12 o .pfx con tu clave privada."
+          },
+          {
+            step: 2,
+            title: "Cargá la firma digital en BIMS",
+            detail: "Andá a Configuración → Facturación electrónica y subí el archivo de firma digital que obtuviste del proveedor certificado."
+          },
+          {
+            step: 3,
+            title: "Configurá el CSC y el IDC",
+            detail: "El CSC (Código de Seguridad del Contribuyente) y el IDC (Identificador del Certificado) son códigos que la DNIT te asigna. Ingresalos en los campos correspondientes."
+          },
+          {
+            step: 4,
+            title: "Emití tu primera factura electrónica",
+            detail: "Una vez configurado todo, podés emitir facturas electrónicas desde el módulo de ventas. BIMS las firma automáticamente y las envía a la DNIT."
+          }
+        ]
+      },
+      {
+        type: "callout",
+        variant: "info",
+        title: "¿Dónde obtener la firma digital?",
+        text: "Podés tramitarla con proveedores certificados externos como ITTI en https://www.secure.itti.digital/index.html u otros proveedores autorizados por la DNIT. El proceso tarda entre 2 y 5 días hábiles."
+      },
+      {
+        type: "faq",
+        title: "Preguntas frecuentes",
+        items: [
+          {
+            q: "¿Qué diferencia hay entre factura preimpresa y electrónica?",
+            a: "La factura preimpresa se imprime en una imprenta autorizada y la electrónica se genera completamente de forma digital. La electrónica es más rápida, económica y no requiere papel."
+          },
+          {
+            q: "¿Cuánto tarda en activarse la facturación electrónica?",
+            a: "Una vez que cargues la firma digital y la DNIT valide tus datos, la activación es inmediata. Podés empezar a facturar electrónicamente en el momento."
+          },
+          {
+            q: "¿Qué pasa si la firma digital vence?",
+            a: "Las firmas digitales tienen una validez de 1 a 2 años. BIMS te va a notificar con anticipación para que la renueves. Sin firma digital vigente, no vas a poder emitir facturas electrónicas."
           }
         ]
       }
