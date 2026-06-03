@@ -1,4 +1,7 @@
 import { useState } from "react";
+import step1Form from "./assets/step1-form.svg";
+import step2Form from "./assets/step2-form.svg";
+
 
 const articles = [
   {
@@ -18,7 +21,8 @@ const articles = [
           {
             step: 1,
             title: "Ingresá a https://getbims.com/ y hacé clic en Empezar gratis",
-            detail: "Vas a ver un formulario donde te pedimos tu nombres, apellidos, nombre de la empresa, correo electrónico y contraseña."
+            detail: "Vas a ver un formulario donde te pedimos tu nombres, apellidos, nombre de la empresa, correo electrónico y contraseña.",
+            image: step1Form
           },
           {
             step: 2,
@@ -81,7 +85,8 @@ const articles = [
           {
             step: 1,
             title: "Abrí el correo electrónico que te enviamos",
-            detail: "Buscá un correo electrónico con el asunto \"Confirmá tu correo en BIMS\" enviado desde noreply@bims.com.py."
+            detail: "Buscá un correo electrónico con el asunto \"Confirmá tu correo en BIMS\" enviado desde hola@bimsapp.com.",
+            image: step2Form
           },
           {
             step: 2,
@@ -202,7 +207,7 @@ const articles = [
           {
             step: 1,
             title: "Seleccioná los medios de pago que usás",
-            detail: "Podés elegir uno o más: Efectivo, Transferencia y Tarjetas. Podés agregar más después desde Configuración."
+            detail: "Podés elegir uno o más: Efectivo, Transferencia y Tarjetas."
           },
           {
             step: 2,
@@ -213,6 +218,19 @@ const articles = [
             step: 3,
             title: "Hacé clic en Continuar",
             detail: "Con al menos un medio de pago seleccionado ya podés avanzar."
+          }
+        ]
+      },
+      {
+        type: "quick_links",
+        items: [
+          {
+            label: "¿Cómo edito una cuenta fondo?",
+            detail: "Andá a Configuración → Finanzas → Cuentas de fondos."
+          },
+          {
+            label: "¿Cómo edito mis medios de pago?",
+            detail: "Andá a Configuración → Ventas → Medios de pago."
           }
         ]
       },
@@ -268,7 +286,7 @@ const articles = [
           {
             step: 3,
             title: "BIMS lee los datos automáticamente",
-            detail: "Vamos a extraer el número de timbrad, punto de venta, sucursal y la fecha de vencimiento del documento. Solo necesitás revisar que los datos sean correctos."
+            detail: "Vamos a extraer el tipo de facturación, el número de timbrado, los datos del punto de venta y de la sucursal, fecha de vencimiento del documento, números de factura, nota de crédito y remisión. Solo necesitás revisar que los datos sean correctos."
           },
           {
             step: 4,
@@ -503,6 +521,10 @@ function StepList({ items }) {
           <div>
             <div style={{ fontWeight: 600, fontSize: 15, color: "#111827", marginBottom: 4 }}>{item.title}</div>
             <div style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>{item.detail}</div>
+              {item.image && (
+                <img src={item.image} alt="" style={{ marginTop: 12, borderRadius: 8, maxWidth: "100%", border: "1px solid #E5E7EB" }} />
+              )}
+            
           </div>
         </div>
       ))}
@@ -600,6 +622,19 @@ function Article({ article }) {
           </div>
         );
         if (block.type === "roles_table") return <RolesTable key={i} />;
+        if (block.type === "quick_links") return (
+          <div key={i} style={{ marginBottom: 20 }}>
+            {block.items.map((item, j) => (
+              <div key={j} style={{ display: "flex", gap: 10, padding: "10px 14px", background: "#F9FAFB", border: "1px solid #E5E7EB", borderRadius: 8, marginBottom: 8 }}>
+                <span style={{ fontSize: 14, color: "#2563EB" }}>→</span>
+                <div>
+                  <span style={{ fontSize: 14, fontWeight: 600, color: "#111827" }}>{item.label} </span>
+                  <span style={{ fontSize: 14, color: "#6B7280" }}>{item.detail}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        );
         if (block.type === "faq") return <FaqList key={i} items={block.items} />;
         if (block.type === "placeholder") return (
           <div key={i} style={{ background: "#F3F4F6", borderRadius: 8, padding: "12px 16px", marginBottom: 20, fontSize: 13, color: "#9CA3AF", fontStyle: "italic" }}>
