@@ -409,44 +409,81 @@ const articles = [
   },
   {
     id: "productos",
-    title: "Cómo cargar tus productos o servicios",
+    title: "Cómo agregar productos y precios",
     category: "Configuración inicial",
-    readTime: "2 min",
+    readTime: "3 min",
     content: [
       {
         type: "intro",
-        text: "Cargá los productos o servicios que vendés para poder facturarlos rápido desde la pantalla de ventas. No es obligatorio en el onboarding: podés agregarlos en cualquier momento."
-      },
-      {
-        type: "steps",
-        title: "Pasos para cargar un producto",
-        items: [
-          {
-            step: 1,
-            title: "Hacé clic en Agregar producto",
-            detail: "Vas a ver un formulario donde podés completar los datos del producto."
-          },
-          {
-            step: 2,
-            title: "Completá los datos del producto",
-            detail: "Nombre, precio unitario y si aplica IVA. El código y la descripción son opcionales pero te van a ayudar a identificarlos más fácil."
-          },
-          {
-            step: 3,
-            title: "Guardá y agregá más si necesitás",
-            detail: "Podés cargar tantos productos como quieras. También podés importarlos en lote desde un archivo Excel desde Configuración → Productos."
-          }
-        ]
+        text: "En BIMS, \"Productos\" abarca los bienes, servicios e insumos que forman parte de tu operación. Configurarlos bien desde el inicio te ahorra trabajo y evita errores en reportes y facturas."
       },
       {
         type: "callout",
         variant: "info",
-        title: "También podés agregar productos al momento de facturar",
-        text: "Si preferís no cargarlos todos ahora, podés crear productos nuevos directamente desde la pantalla de nueva venta. Se van a guardar para usarlos en el futuro."
+        title: "¿Qué no es un Producto?",
+        text: "Los gastos que no participan del inventario (honorarios, alquileres, servicios básicos) se configuran como Cuentas de Gastos, no como Productos."
       },
       {
-        type: "placeholder",
-        text: "📌 Próximamente: capturas del formulario de carga de productos."
+        type: "section_heading",
+        number: 1,
+        title: "Categorías de productos"
+      },
+      {
+        type: "paragraph",
+        text: "Antes de cargar tus productos, organizalos en categorías. Esto te permite filtrar reportes, aplicar precios y promociones por grupo, y mantener el catálogo ordenado a medida que crece."
+      },
+      {
+        type: "route",
+        steps: ["Configuración", "Categorías de productos", "Crear"]
+      },
+      {
+        type: "paragraph",
+        text: "Podés crear jerarquías de dos niveles:"
+      },
+      {
+        type: "example",
+        text: "\"Bebidas\" como categoría padre → \"Bebidas Frías\" y \"Bebidas Calientes\" como subcategorías."
+      },
+      {
+        type: "callout",
+        variant: "tip",
+        title: "Planeá antes de cargar",
+        text: "Definí la estructura de categorías antes de agregar productos. Reorganizarlos después toma más tiempo del esperado."
+      },
+      {
+        type: "section_heading",
+        number: 2,
+        title: "Dar de alta un producto"
+      },
+      {
+        type: "paragraph",
+        text: "Para crear un producto nuevo, usá la ruta principal o el acceso rápido del catálogo:"
+      },
+      {
+        type: "route",
+        steps: ["Productos", "Crear"]
+      },
+      {
+        type: "note",
+        text: "También podés usar el ícono + desde el catálogo."
+      },
+      {
+        type: "subsection_heading",
+        title: "Campos principales"
+      },
+      {
+        type: "fields_table",
+        rows: [
+          { field: "Nombre", description: "Cómo aparece el producto en el POS y en las facturas." },
+          { field: "Categoría", description: "A qué categoría pertenece (definida en el paso anterior)." },
+          { field: "Código / Código de barras", description: "Para buscarlo rápido en el POS o usar lectora de códigos." },
+          { field: "Tipo de IVA", description: "El porcentaje de IVA que corresponde según la normativa fiscal." },
+          { field: "Precio de venta", description: "El precio al que lo vendés a tus clientes." },
+          { field: "Costo", description: "El valor de adquisición o producción. BIMS lo usa para calcular márgenes." },
+          { field: "Unidad de medida", description: "Unidad, kg, litro, etc." },
+          { field: "Control de stock", description: "Si BIMS debe descontar unidades del inventario con cada venta.", optional: true },
+          { field: "Almacén", description: "Dónde se almacena físicamente este producto.", optional: true }
+        ]
       }
     ]
   },
@@ -518,6 +555,7 @@ const articles = [
   {
     id: "plan",
     title: "Dónde ver los detalles de tu plan",
+    tag: "Pendiente de actualizar",
     category: "Cuenta y facturación",
     readTime: "1 min",
     content: [
@@ -564,8 +602,9 @@ const categoryOrder = ["Primeros pasos", "Configuración inicial", "Cuenta y fac
 
 function CalloutBox({ variant, title, text, items }) {
   const styles = {
-    info: { bg: "#EFF6FF", border: "#BFDBFE", icon: "ℹ️", titleColor: "#1D4ED8" },
-    warning: { bg: "#FFFBEB", border: "#FDE68A", icon: "⚠️", titleColor: "#92400E" }
+    info:    { bg: "#EFF6FF", border: "#BFDBFE", icon: "ℹ️",  titleColor: "#1D4ED8" },
+    warning: { bg: "#FFFBEB", border: "#FDE68A", icon: "⚠️",  titleColor: "#92400E" },
+    tip:     { bg: "#F0FDF4", border: "#BBF7D0", icon: "💡",  titleColor: "#166534" }
   };
   const s = styles[variant];
   return (
@@ -673,15 +712,96 @@ function RolesTable() {
   );
 }
 
+function RouteBlock({ steps }) {
+  return (
+    <div style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "#F3F4F6", border: "1px solid #E5E7EB", borderRadius: 6, padding: "5px 10px", fontSize: 13, fontFamily: "'SF Mono', 'Fira Code', monospace", color: "#374151", margin: "8px 0 12px", flexWrap: "wrap" }}>
+      {steps.map((s, i) => (
+        <span key={i} style={{ display: "flex", alignItems: "center", gap: 4 }}>
+          {i > 0 && <span style={{ color: "#9CA3AF" }}>›</span>}
+          {s}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function ExampleBlock({ text }) {
+  return (
+    <div style={{ background: "#F8FAFC", borderRadius: 6, padding: "10px 14px", fontSize: 14, color: "#374151", margin: "8px 0 12px", borderLeft: "3px solid #2563EB" }}>
+      <strong>Ejemplo:</strong> {text}
+    </div>
+  );
+}
+
+function NoteBlock({ text }) {
+  return (
+    <p style={{ fontSize: 13, color: "#6B7280", marginTop: -4, marginBottom: 12 }}>{text}</p>
+  );
+}
+
+function SectionHeading({ number, title }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 17, fontWeight: 700, color: "#111827", margin: "32px 0 12px", letterSpacing: "-0.01em" }}>
+      <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 26, height: 26, background: "#2563EB", color: "#fff", borderRadius: "50%", fontSize: 12, fontWeight: 700, flexShrink: 0 }}>
+        {number}
+      </span>
+      {title}
+    </div>
+  );
+}
+
+function SubsectionHeading({ title }) {
+  return (
+    <div style={{ fontSize: 14, fontWeight: 600, color: "#111827", margin: "20px 0 10px" }}>{title}</div>
+  );
+}
+
+function FieldsTable({ rows }) {
+  return (
+    <div style={{ overflowX: "auto", margin: "4px 0 24px", borderRadius: 8, border: "1px solid #E5E7EB", background: "#fff" }}>
+      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
+        <thead>
+          <tr style={{ background: "#F9FAFB", borderBottom: "1px solid #E5E7EB" }}>
+            <th style={{ textAlign: "left", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "#9CA3AF", padding: "10px 16px", width: 200 }}>Campo</th>
+            <th style={{ textAlign: "left", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "#9CA3AF", padding: "10px 16px" }}>¿Para qué sirve?</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i} style={{ borderBottom: i < rows.length - 1 ? "1px solid #E5E7EB" : "none" }}>
+              <td style={{ padding: "12px 16px", fontWeight: 600, color: "#111827", whiteSpace: "nowrap", verticalAlign: "top" }}>
+                {row.field}
+                {row.optional && (
+                  <span style={{ display: "inline-block", marginLeft: 6, background: "#EFF6FF", color: "#2563EB", border: "1px solid #BFDBFE", borderRadius: 4, fontSize: 10, fontWeight: 600, padding: "1px 6px", letterSpacing: "0.04em", textTransform: "uppercase", verticalAlign: "middle" }}>
+                    Opcional
+                  </span>
+                )}
+              </td>
+              <td style={{ padding: "12px 16px", color: "#6B7280", lineHeight: 1.6, verticalAlign: "top" }}>{row.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function Article({ article }) {
   return (
     <div>
       <div style={{ fontSize: 12, color: "#9CA3AF", marginBottom: 8 }}>
         {article.category} · {article.readTime} de lectura
       </div>
-      <h1 style={{ fontSize: 24, fontWeight: 700, color: "#111827", marginBottom: 20, lineHeight: 1.3 }}>
-        {article.title}
-      </h1>
+      <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 20 }}>
+        <h1 style={{ fontSize: 24, fontWeight: 700, color: "#111827", lineHeight: 1.3, margin: 0 }}>
+          {article.title}
+        </h1>
+        {article.tag && (
+          <span style={{ background: "#FEF3C7", color: "#92400E", border: "1px solid #FDE68A", borderRadius: 4, fontSize: 11, fontWeight: 600, padding: "3px 8px", letterSpacing: "0.03em", whiteSpace: "nowrap" }}>
+            {article.tag}
+          </span>
+        )}
+      </div>
       {article.content.map((block, i) => {
         if (block.type === "intro") return (
           <p key={i} style={{ fontSize: 15, color: "#374151", lineHeight: 1.7, marginBottom: 24, borderLeft: "3px solid #2563EB", paddingLeft: 14 }}>
@@ -721,6 +841,13 @@ function Article({ article }) {
             {block.text}
           </div>
         );
+        if (block.type === "section_heading") return <SectionHeading key={i} number={block.number} title={block.title} />;
+        if (block.type === "subsection_heading") return <SubsectionHeading key={i} title={block.title} />;
+        if (block.type === "paragraph") return <p key={i} style={{ fontSize: 14, color: "#374151", lineHeight: 1.7, marginBottom: 8 }}>{block.text}</p>;
+        if (block.type === "route") return <RouteBlock key={i} steps={block.steps} />;
+        if (block.type === "example") return <ExampleBlock key={i} text={block.text} />;
+        if (block.type === "note") return <NoteBlock key={i} text={block.text} />;
+        if (block.type === "fields_table") return <FieldsTable key={i} rows={block.rows} />;
         return null;
       })}
     </div>
